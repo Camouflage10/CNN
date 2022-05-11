@@ -19,10 +19,10 @@ jobs:
             #echo '##Metrics'
             cat metrics.txt
             
-            #echo '## Metrics' > report.md
-            cat metrics.txt > report.md
+            echo '## Metrics' > report.md
+            #cat metrics.txt > report.md
             
             #echo '## CM' >> report.md
-            cml-publish cm.png --md >> report.md
+            #cml-publish cm.png --md >> report.md
             
-            #cml-send-comment report.md
+            cml-send-comment report.md
