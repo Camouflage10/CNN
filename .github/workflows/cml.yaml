@@ -16,7 +16,10 @@ jobs:
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
             
-            echo 'Metrics' > repot.md
+            echo '##Metrics' > report.md
             cat metrics.txt >> report.md
+            
+            echo '##CM' > report.md
+            cml-publish cm.png --md >> report.md
             
             cml-send-comment report.md
