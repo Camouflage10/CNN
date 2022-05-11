@@ -1,7 +1,7 @@
 pandas
-pandas_datareader
+matplotlib
 numpy
 sklearn
 tensorflow
 keras
-yfinance
+seaborn
