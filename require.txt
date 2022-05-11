@@ -5,4 +5,5 @@ sklearn
 tensorflow
 keras
 seaborn
+json
 ipynb-py-convert
