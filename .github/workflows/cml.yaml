@@ -5,10 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://dvcorg/cml-py3:latest
     steps:
+      - uses: actions/checkout@v2
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+            python -m pip install --upgrade pip
             pip install -r require.txt
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
