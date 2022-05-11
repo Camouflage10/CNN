@@ -1,19 +1,24 @@
 name: CNN
 on: [push]
-  jobs:
-    run:
-      run-on: [ubuntu-latest]
-      container: docker://dvcorg/cml-py3:latest\
-      steps:
-        - uses: checkout
-        - name: cml_run
-          env:
-            repo_token: ${{secrets.GITHUB_TOKEN}}
-          run: |
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
             pip install -r require.txt
-            pip install ipynb-py-convert
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
             
-            #echo 'Metrics' > repot.md
-            #cat metrics.txt >> report.md
+            echo "## Metrics" >> report.md
+            cat metrics.txt >> report.md
+            
+            echo "## CM" >> report.md
+            cml publish cm.png --md >> report.md
+            
+            cml send-comment report.md
