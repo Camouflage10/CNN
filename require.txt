@@ -5,3 +5,4 @@ sklearn
 tensorflow
 keras
 seaborn
+ipynb-py-convert
