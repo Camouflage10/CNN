@@ -23,6 +23,6 @@ jobs:
             #cat metrics.txt >> report.md
             
             #echo "## CM" >> report.md
-            #cml-publish cm.png --md >> report.md
+            #cml publish cm.png --md >> report.md
             
-            cml-send-comment report.md
+            cml send-comment report.md
