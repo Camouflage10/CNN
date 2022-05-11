@@ -3,6 +3,7 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -16,13 +17,13 @@ jobs:
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
             
-            #echo '##Metrics'
+            #echo "## Metrics"
             cat metrics.txt
             
-            echo '## Metrics' > report.md
+            echo "## Metrics" > report.md
             #cat metrics.txt > report.md
             
-            #echo '## CM' >> report.md
+            #echo "## CM" >> report.md
             #cml-publish cm.png --md >> report.md
             
             cml-send-comment report.md
