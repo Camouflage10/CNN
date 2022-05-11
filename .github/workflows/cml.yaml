@@ -11,13 +11,9 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-            python -m pip install --upgrade pip
             pip install -r require.txt
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
-            
-            echo "## Metrics"
-            cat metrics.txt
             
             echo "## Metrics" >> report.md
             cat metrics.txt >> report.md
