@@ -3,9 +3,10 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
-    container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -16,7 +17,7 @@ jobs:
             python CNN.py 
             
             #echo "## Metrics"
-            cat metrics.txt
+            #cat metrics.txt
             
             echo "## Metrics" >> report.md
             #cat metrics.txt >> report.md
