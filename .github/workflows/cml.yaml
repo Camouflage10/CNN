@@ -12,13 +12,12 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
             pip install -r require.txt
-            ipynb-py-convert CNN.ipynb CNN.py
-            python CNN.py 
+            dvc repo
             
-            echo "## Metrics" >> report.md
-            cat metrics.txt >> report.md
+            git fetch --prune
+            dvc metrics diff --show-md master > report.md
             
-            echo "## CM" >> report.md
+            echo "## confusion matrix" >> report.md
             cml publish cm.png --md >> report.md
             
             cml send-comment report.md
