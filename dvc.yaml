@@ -1,6 +1,6 @@
 stages:
   setup:
-    cmd:  ipynb-py-convert CNN.ipynb CNN.py
+    cmd:  ipynb-py-convert CNN.ipyb CNN.py
     deps:
     - CNN.ipyb
     outs:
