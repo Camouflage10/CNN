@@ -9,8 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
       - name: Fetch resources
-        run: ./scripts/fetch-resources.sh
-        	
+        run: |
             pip install -r require.txt
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
