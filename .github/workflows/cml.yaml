@@ -11,7 +11,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
         
-            #pip install -r require.txt
+            pip install -r require.txt
             dvc repro
             echo 'done'
             #git fetch --prune
