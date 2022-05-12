@@ -6,12 +6,21 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - name: update json
-        run: |
+      - name: Fetch resources
+        run: ./scripts/fetch-resources.sh
+        	
             pip install -r require.txt
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
             git add metrics.txt
             git add metrics.json
+        
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: metrics.json
+          commit-msg: Update resources
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        
