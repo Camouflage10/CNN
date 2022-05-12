@@ -15,7 +15,7 @@ jobs:
             dvc repro
 
             git fetch --prune
-            dvc metrics diff --show-md safe
+            dvc metrics diff --show-md main > report.md
             
             echo "## confusion matrix" >> report.md
             cml publish cm.png --md >> report.md
