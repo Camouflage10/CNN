@@ -1,14 +1,16 @@
 stages:
   setup:
-    cmd: ipynb-py-convert CNN.ipynb CNN.py
+    cmd:  ipynb-py-convert CNN.ipynb CNN.py
     deps:
-    -CNN.ipyb
+    - CNN.ipyb
     outs:
-    -CNN.py
+    - CNN.py  
   train:
     cmd: python CNN.py
     deps:
-    -CNN.py
+    - CNN.py
     outs:
+    - cm.png
+    metrics:
     - metrics.json:
         cache: false
