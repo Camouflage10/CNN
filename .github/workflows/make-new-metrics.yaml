@@ -14,5 +14,5 @@ jobs:
             pip install -r require.txt
             ipynb-py-convert CNN.ipynb CNN.py
             python CNN.py 
-            
+            git add metrics.txt
             git add metrics.json
