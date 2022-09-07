@@ -1,3 +1,4 @@
+#yaml
 stages:
   setup:
     cmd:  ipynb-py-convert CNN.ipynb CNN.py
